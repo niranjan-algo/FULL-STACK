@@ -8,6 +8,7 @@ import Calender from './pages/calender'
 import Dashboard from './pages/Dashboard'
 import Clients from './pages/clients'
 import Team from './pages/team'
+import Register from './pages/register'
 function App() {
     return (
       <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/calender" element={<Calender/>}/>
           <Route path="/settings" element={<Settings/>}/>
+          <Route path="/register" element={<Register/>}></Route>
         </Routes>
       </BrowserRouter>
     )
