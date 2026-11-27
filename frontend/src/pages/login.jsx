@@ -1,60 +1,59 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login(){
     const navigate=useNavigate();
-    //const[email,setEmail]=useState("")
+    const location=useLocation();
+    const registerdata = location.state?.registerdata;   
+ //const[email,setEmail]=useState("")
     //const[pass,setPass]=useState("")
-    const[formdata,setFormdata]=useState({user:"",pass:""})
-
-    const print = (e)=>{
-        e.preventDefault();
-        console.log("Login Page",formdata)
-        alert("Login Succesfull")
-        navigate("/dashboard",{state:formdata})
-    };
-
-function handlechange(e){
-    e.preventDefault();
-    setFormdata({...formdata,[e.target.name]:e.target.value})
+    const [logindata, setLogindata] = useState({email: "",password: ""});
+    function handlechange(e){
+         setLogindata({...logindata,[e.target.name]:e.target.value})
 }
-
-    return( 
+    function handleSubmit(e){
+        e.preventDefault();
+     if (
+            logindata.email === registerdata.email &&
+            logindata.password === registerdata.password
+        ) {
+            alert("Login Successful");
+            console.log(logindata);
+            navigate("/dashboard", {
+                state:logindata
+            });
+        } else {
+            alert("Invalid username or password");
+        }
+}
+    return(
     <>
 {/*
     <div>
         <label>Email </label>
         <input placeholder="Enter email" required type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-
         <label>Password </label>
         <input placeholder="Enter Password" required type="password" value={pass} onChange={(e)=>setPass(e.target.value)} />
-
         <button onClick={()=>console.log(email,pass)}>Submit</button>
     </div>
-
-
     <form onSubmit={print}>
         <label>Email </label>
         <input placeholder="Enter email" required type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-
         <label>Password </label>
         <input placeholder="Enter Password" required type="password" value={pass} onChange={(e)=>setPass(e.target.value)} />
-
         <button type="submit">Submit</button>
     </form>
     */}
 
-    <form onSubmit={print}>
+        <form onSubmit={handleSubmit}>
         <label>Email </label>
-        <input placeholder="Enter username" required type="text" name="user" onChange={handlechange} />
-
+        <input placeholder="Enter your email" required type="email" name="email" onChange={handlechange} />
         <label>Password </label>
-        <input placeholder="Enter Password" required type="password" name="pass" onChange={handlechange} />
-
+        <input placeholder="Enter Password" required type="password" name="password" onChange={handlechange} />
         <button type="submit">Submit</button>
     </form>
-
     </>
+
     );
 }
 export default Login;

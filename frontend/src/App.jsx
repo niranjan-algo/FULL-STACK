@@ -9,11 +9,15 @@ import Dashboard from './pages/Dashboard'
 import Clients from './pages/clients'
 import Team from './pages/team'
 import Register from './pages/register'
+import Adminlayout from './pages/admin/adminlayout'
+import Userdetails from './pages/admin/userdetails'
+import Adminsettings from './pages/admin/settings.'
+import Admindashboard from './pages/admin/admindashboard'
 function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/projects" element={<Projects/>}/>
           <Route path="/tasks" element={<Tasks/>}/>
           <Route path="/team" element={<Team/>}/>
@@ -21,7 +25,13 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/calender" element={<Calender/>}/>
           <Route path="/settings" element={<Settings/>}/>
-          <Route path="/register" element={<Register/>}></Route>
+          <Route path="/" element={<Register/>}/>
+          <Route path="/admin" element={<Adminlayout/>}>
+            <Route path="admindashboard" element={<Admindashboard/>}/>
+            <Route path="settings" element={<Adminsettings/>}/>
+            <Route path="userdetails" element={<Userdetails/>}/>
+          </Route>
+
         </Routes>
       </BrowserRouter>
     )
