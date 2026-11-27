@@ -27,7 +27,7 @@ function Login(){
         }
 }
     return(
-    <>
+        <div className="min-h-screen flex items-center justify-center bg-taupe-300 p-4">
 {/*
     <div>
         <label>Email </label>
@@ -42,18 +42,17 @@ function Login(){
         <label>Password </label>
         <input placeholder="Enter Password" required type="password" value={pass} onChange={(e)=>setPass(e.target.value)} />
         <button type="submit">Submit</button>
-    </form>
+    </f
+    orm>
     */}
-
-        <form onSubmit={handleSubmit}>
-        <label>Email </label>
-        <input placeholder="Enter your email" required type="email" name="email" onChange={handlechange} />
-        <label>Password </label>
-        <input placeholder="Enter Password" required type="password" name="password" onChange={handlechange} />
-        <button type="submit">Submit</button>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 ">
+        <label htmlFor="useremail" className="block text-gray-700 font-medium mb-1">Email </label>
+        <input id="useremail" placeholder="Enter your email" required type="email" name="email" onChange={handlechange} className="w-full border border-blue-300 rounded-2xl p-2"/>
+        <label htmlFor="Password" className="block text-gray-700 font-medium mb-1">Password </label>
+        <input id="Password"placeholder="Enter Password" required type="password" name="password" onChange={handlechange} className="w-full border border-blue-300 rounded-2xl p-2"/>
+        <button type="submit" className="text-xl text-black w-full mt-5  text-blue-500 rounded-md md-2 ">Submit</button>
     </form>
-    </>
-
+    </div>
     );
 }
 export default Login;
