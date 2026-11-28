@@ -4,13 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 function Login(){
     const navigate=useNavigate();
     const location=useLocation();
-    const registerdata = location.state?.registerdata;   
+    const registerdata = location.state;  
  //const[email,setEmail]=useState("")
     //const[pass,setPass]=useState("")
     const [logindata, setLogindata] = useState({email: "",password: ""});
     function handlechange(e){
          setLogindata({...logindata,[e.target.name]:e.target.value})
 }
+
     function handleSubmit(e){
         e.preventDefault();
      if (
@@ -42,8 +43,7 @@ function Login(){
         <label>Password </label>
         <input placeholder="Enter Password" required type="password" value={pass} onChange={(e)=>setPass(e.target.value)} />
         <button type="submit">Submit</button>
-    </f
-    orm>
+    </form>
     */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-5 ">
         <label htmlFor="useremail" className="block text-gray-700 font-medium mb-1">Email </label>
