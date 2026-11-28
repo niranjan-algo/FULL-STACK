@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function Login(){
     const navigate=useNavigate();
     const location=useLocation();
-    const registerdata = location.state;  
+    const registerdata = location.state?.registerdata;
  //const[email,setEmail]=useState("")
     //const[pass,setPass]=useState("")
     const [logindata, setLogindata] = useState({email: "",password: ""});
@@ -21,7 +21,7 @@ function Login(){
             alert("Login Successful");
             console.log(logindata);
             navigate("/dashboard", {
-                state:logindata
+                state : logindata
             });
         } else {
             alert("Invalid username or password");

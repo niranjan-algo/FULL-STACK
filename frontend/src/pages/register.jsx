@@ -7,7 +7,7 @@ function Register() {
     const {register, handleSubmit, formState:{errors}}=useForm({
         resolver: zodResolver(registerschema)
     })
-    
+   
   function onSubmit1(data) {
     console.log("Registerdata:", data);
     alert("Registration successful");
